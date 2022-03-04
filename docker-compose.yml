@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+#########################[ POSTGRESQL ]############################
+  postgresql:
+    image: postgres:14.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgreadmin
+      - POSTGRES_PASSWORD=postgrepassword
+    ports:
+      - '5432:5432'
+    volumes: 
+      - postgresql:/var/lib/postgresql/data
+#-----------------------------------------------------------------#
+############################[ REDIS ]##############################
+  redisdb:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+        - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+        - redisdb:/data
+#-----------------------------------------------------------------#
+
+
+volumes:
+    postgresql:
+        driver: local
+    redisdb:
+        driver: local
+  
