@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Authentication.Rules
 {
-    public class UserBusinessRules
+    public class AuthenticationBusinessRules
     {
         private IUserReadRepository _userReadRepository;
 
-        public UserBusinessRules(IUserReadRepository userReadRepository)
+        public AuthenticationBusinessRules(IUserReadRepository userReadRepository)
         {
             _userReadRepository = userReadRepository;
         }

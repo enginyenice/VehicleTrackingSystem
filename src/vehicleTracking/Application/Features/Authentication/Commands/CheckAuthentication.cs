@@ -23,11 +23,11 @@ namespace Application.Features.Authentication.Commands
 
     public class CreateBrandCommandHandler : IRequestHandler<CheckAuthenticationCommand, IResponse<AccessToken>>
     {
-        private UserBusinessRules _userBusinessRules;
+        private AuthenticationBusinessRules _userBusinessRules;
         private ITokenHelper _tokenHelper;
         private IUserReadRepository _userReadRepository;
 
-        public CreateBrandCommandHandler(UserBusinessRules userBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
+        public CreateBrandCommandHandler(AuthenticationBusinessRules userBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
         {
             _userBusinessRules = userBusinessRules;
             _tokenHelper = tokenHelper;

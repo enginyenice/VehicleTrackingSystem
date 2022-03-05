@@ -18,7 +18,7 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<UserBusinessRules>();
+            services.AddScoped<AuthenticationBusinessRules>();
             services.AddScoped<ITokenHelper, JwtHelper>();
             return services;
         }
