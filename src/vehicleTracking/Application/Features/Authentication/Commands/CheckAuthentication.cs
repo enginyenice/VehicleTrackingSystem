@@ -23,13 +23,13 @@ namespace Application.Features.Authentication.Commands
 
     public class CreateBrandCommandHandler : IRequestHandler<CheckAuthenticationCommand, IResponse<AccessToken>>
     {
-        private AuthenticationBusinessRules _userBusinessRules;
+        private AuthenticationBusinessRules _authenticationBusinessRules;
         private ITokenHelper _tokenHelper;
         private IUserReadRepository _userReadRepository;
 
-        public CreateBrandCommandHandler(AuthenticationBusinessRules userBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
+        public CreateBrandCommandHandler(AuthenticationBusinessRules authenticationBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
         {
-            _userBusinessRules = userBusinessRules;
+            _authenticationBusinessRules = authenticationBusinessRules;
             _tokenHelper = tokenHelper;
             _userReadRepository = userReadRepository;
         }
@@ -37,7 +37,7 @@ namespace Application.Features.Authentication.Commands
         public async Task<IResponse<AccessToken>> Handle(CheckAuthenticationCommand request, CancellationToken cancellationToken)
         {
             string hashPassword = HashingHelper.HashPassword(request.Password);
-            await _userBusinessRules.UserIsExist(request.Username, hashPassword);
+            await _authenticationBusinessRules.UserIsExist(request.Username, hashPassword);
 
             User user = await _userReadRepository.GetAsync(p => p.Username == request.Username && p.PasswordHash == hashPassword);
             AccessToken accessToken = _tokenHelper.CreateToken(user);
