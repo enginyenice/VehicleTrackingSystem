@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Persistence.SQL.Context;
 using Application.Services.Repositories;
 using Persistence.SQL.Repositories;
+using Application.Services.Repositories.UserRepositories;
+using Persistence.SQL.Repositories.UserRepositories;
 
 namespace Persistence
 {
@@ -17,7 +19,11 @@ namespace Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BaseSqlContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgreSQL")));
-            services.AddScoped<IUserRepository, UserRepository>();
+
+            // Read
+            services.AddScoped<IUserReadRepository, UserReadRepository>();
+            // Write
+            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             return services;
         }
     }

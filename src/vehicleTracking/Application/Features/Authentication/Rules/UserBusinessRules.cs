@@ -1,4 +1,5 @@
 ﻿using Application.Services.Repositories;
+using Application.Services.Repositories.UserRepositories;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security.Hashing;
 using System;
@@ -11,16 +12,16 @@ namespace Application.Features.Authentication.Rules
 {
     public class UserBusinessRules
     {
-        private IUserRepository _userRepository;
+        private IUserReadRepository _userReadRepository;
 
-        public UserBusinessRules(IUserRepository userRepository)
+        public UserBusinessRules(IUserReadRepository userReadRepository)
         {
-            _userRepository = userRepository;
+            _userReadRepository = userReadRepository;
         }
 
         public async Task UserIsExist(string name, string hashPassword)
         {
-            if (await _userRepository.IsExist(p => p.Username == name && p.PasswordHash == hashPassword) == false)
+            if (await _userReadRepository.IsExist(p => p.Username == name && p.PasswordHash == hashPassword) == false)
                 throw new BusinessException("User not found", 404);
         }
     }

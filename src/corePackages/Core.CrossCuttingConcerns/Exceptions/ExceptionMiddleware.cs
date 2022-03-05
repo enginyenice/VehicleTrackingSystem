@@ -54,12 +54,13 @@ namespace Core.CrossCuttingConcerns.Exceptions
             if (exception.GetType() == typeof(BusinessException))
             {
                 BusinessException businessException = (BusinessException)exception;
+                context.Response.StatusCode = businessException.StatusCode;
                 return context.Response.WriteAsync(
                     Response<NoDataDto>
                     .Fail(exception.Message, businessException.StatusCode, true)
                     .ToString());
             }
-
+            context.Response.StatusCode = StatusCodes.Status400BadRequest;
             return context.Response.WriteAsync(
                 Response<NoDataDto>
                     .Fail(exception.Message, StatusCodes.Status400BadRequest, true)

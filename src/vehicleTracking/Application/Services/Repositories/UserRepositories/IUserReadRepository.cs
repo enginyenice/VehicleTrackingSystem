@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.Repositories
+namespace Application.Services.Repositories.UserRepositories
 {
-    public interface IUserRepository : IAsyncRepository<User>
+    public interface IUserReadRepository : IReadRepository<User>
     {
     }
 }
