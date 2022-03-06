@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-#########################[ POSTGRESQL ]############################
+  #########################[ POSTGRESQL ]############################
   postgresql:
     image: postgres:14.2-alpine
     restart: always
@@ -9,24 +9,40 @@ services:
       - POSTGRES_PASSWORD=postgrepassword
     ports:
       - '5432:5432'
-    volumes: 
+    volumes:
       - postgresql:/var/lib/postgresql/data
-#-----------------------------------------------------------------#
-############################[ REDIS ]##############################
+  #-----------------------------------------------------------------#
+  ############################[ REDIS ]##############################
   redisdb:
     image: redis:6.2-alpine
     restart: always
     ports:
-        - '6379:6379'
+      - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-    volumes: 
-        - redisdb:/data
+    volumes:
+      - redisdb:/data
+  #-----------------------------------------------------------------#
+  ##########################[ RABBITMQ ]#############################
+  rabbitmqmb:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmqmb"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmquser"
+      RABBITMQ_DEFAULT_PASS: "rabbitmqpassword"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmqmb"
+    volumes:
+      - rabbitmqmb:/data
 #-----------------------------------------------------------------#
-
-
 volumes:
-    postgresql:
-        driver: local
-    redisdb:
-        driver: local
-  
+  postgresql:
+    driver: local
+  redisdb:
+    driver: local
+  rabbitmqmb:
+    driver: local
