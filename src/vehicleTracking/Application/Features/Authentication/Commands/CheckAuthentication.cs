@@ -21,13 +21,13 @@ namespace Application.Features.Authentication.Commands
         public string Password { get; set; }
     }
 
-    public class CreateBrandCommandHandler : IRequestHandler<CheckAuthenticationCommand, IResponse<AccessToken>>
+    public class CheckAuthenticationCommandHandler : IRequestHandler<CheckAuthenticationCommand, IResponse<AccessToken>>
     {
         private AuthenticationBusinessRules _authenticationBusinessRules;
         private ITokenHelper _tokenHelper;
         private IUserReadRepository _userReadRepository;
 
-        public CreateBrandCommandHandler(AuthenticationBusinessRules authenticationBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
+        public CheckAuthenticationCommandHandler(AuthenticationBusinessRules authenticationBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
         {
             _authenticationBusinessRules = authenticationBusinessRules;
             _tokenHelper = tokenHelper;

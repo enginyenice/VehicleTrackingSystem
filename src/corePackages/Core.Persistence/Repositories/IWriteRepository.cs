@@ -13,5 +13,11 @@ namespace Core.Persistence.Repositories
         Task UpdateAsync(TEntity entity);
 
         Task DeleteAsync(TEntity entity);
+
+        Task AddRangeAsync(IEnumerable<TEntity> entities);
+
+        void UpdateRange(IEnumerable<TEntity> entities);
+
+        void DeleteRange(IEnumerable<TEntity> entities);
     }
 }

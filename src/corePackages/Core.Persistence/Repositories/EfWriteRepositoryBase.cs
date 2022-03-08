@@ -36,5 +36,20 @@ namespace Core.Persistence.Repositories
             Context.Entry(entity).State = EntityState.Modified;
             await Context.SaveChangesAsync();
         }
+
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await Context.AddRangeAsync(entities);
+        }
+
+        public void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            Context.UpdateRange(entities);
+        }
+
+        public void DeleteRange(IEnumerable<TEntity> entities)
+        {
+            Context.RemoveRange(entities);
+        }
     }
 }

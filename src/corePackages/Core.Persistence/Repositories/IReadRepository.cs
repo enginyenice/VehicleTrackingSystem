@@ -9,10 +9,12 @@ namespace Core.Persistence.Repositories
 {
     public interface IReadRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, bool tracking = true);
 
-        IQueryable<TEntity> Query();
+        Task<TEntity> GetByIdAsync(int Id, bool tracking = true);
 
-        Task<bool> IsExist(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> Query(bool tracking = true);
+
+        Task<bool> IsExist(Expression<Func<TEntity, bool>> predicate, bool tracking = true);
     }
 }
