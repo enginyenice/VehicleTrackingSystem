@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistence.SQL.Configurations
+namespace Persistence.EntityFramework.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

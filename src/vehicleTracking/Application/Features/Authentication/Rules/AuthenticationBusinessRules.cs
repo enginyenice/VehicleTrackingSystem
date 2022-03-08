@@ -21,8 +21,8 @@ namespace Application.Features.Authentication.Rules
 
         public async Task UserIsExist(string name, string hashPassword)
         {
-            if (await _userReadRepository.IsExist(p => p.Username == name && p.PasswordHash == hashPassword, tracking: false) == false) ;
-            throw new BusinessException("User not found", 404);
+            if (await _userReadRepository.IsExist(p => p.Username == name && p.PasswordHash == hashPassword, tracking: false) == false)
+                throw new BusinessException("User not found", 404);
         }
     }
 }

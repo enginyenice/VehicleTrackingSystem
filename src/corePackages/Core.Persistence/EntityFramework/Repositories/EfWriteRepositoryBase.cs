@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Persistence.Repositories
+namespace EntityFramework.Core.Persistence.Repositories
 {
     public class EfWriteRepositoryBase<TEntity, TContext> : IWriteRepository<TEntity>
         where TEntity : Entity

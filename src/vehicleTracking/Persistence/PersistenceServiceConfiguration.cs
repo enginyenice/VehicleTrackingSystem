@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Persistence.SQL.Context;
+using Persistence.EntityFramework.Context;
 using Application.Services.Repositories;
-using Persistence.SQL.Repositories;
+using Persistence.EntityFramework.Repositories;
 using Application.Services.Repositories.UserRepositories;
-using Persistence.SQL.Repositories.UserRepositories;
+using Persistence.EntityFramework.Repositories.UserRepositories;
 
 namespace Persistence
 {

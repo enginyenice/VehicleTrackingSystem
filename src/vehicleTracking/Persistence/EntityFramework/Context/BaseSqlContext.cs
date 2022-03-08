@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistence.SQL.Context
+namespace Persistence.EntityFramework.Context
 {
     public class BaseSqlContext : DbContext
     {

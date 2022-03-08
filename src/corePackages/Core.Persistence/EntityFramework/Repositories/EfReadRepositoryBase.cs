@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Persistence.Repositories
+namespace EntityFramework.Core.Persistence.Repositories
 {
     public class EfReadRepositoryBase<TEntity, TContext> : IReadRepository<TEntity>
         where TEntity : Entity
