@@ -1,4 +1,4 @@
-﻿using Application.Features.Authentication.Commands;
+﻿using Application.Features.Authentications.Commands;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,4 @@
-﻿using Application.Features.Authentication.Rules;
+﻿using Application.Features.Authentications.Rules;
 using Core.Security.Jwt;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,19 +1,12 @@
-﻿using Application.Features.Authentication.Dtos;
-using Application.Features.Authentication.Rules;
-using Application.Services.EntityFramework.Repositories;
+﻿using Application.Features.Authentications.Rules;
 using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Core.Application.Responses;
 using Core.Security.Entities;
 using Core.Security.Hashing;
 using Core.Security.Jwt;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Features.Authentication.Commands
+namespace Application.Features.Authentications.Commands
 {
     public class CheckAuthenticationCommand : IRequest<IResponse<AccessToken>>
     {

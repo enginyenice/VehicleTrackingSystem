@@ -11,6 +11,9 @@ using Application.Services.EntityFramework.Repositories;
 using Persistence.EntityFramework.Repositories;
 using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Persistence.EntityFramework.Repositories.UserRepositories;
+using Core.Persistence.MongoDb;
+using Application.Services.MongoDb;
+using Persistence.MongoDb.Repositories.CarDetailRepositories;
 
 namespace Persistence
 {
@@ -18,12 +21,27 @@ namespace Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
+            #region EntityFramework Operations
+
             services.AddDbContext<BaseSqlContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("PostgreSQL")));
 
             // Read
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             // Write
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+
+            #endregion EntityFramework Operations
+
+            #region MongoDb Operations
+
+            services.Configure<MongoDbDatabaseSettings>(configuration.GetSection("MongoDbDatabaseSettings"));
+            // Read
+            services.AddScoped<ICarDetailMongoReadRepository, CarDetailMongoReadRepository>();
+            // Write
+            services.AddScoped<ICarDetailMongoWriteRepository, CarDetailMongoWriteRepository>();
+
+            #endregion MongoDb Operations
+
             return services;
         }
     }
