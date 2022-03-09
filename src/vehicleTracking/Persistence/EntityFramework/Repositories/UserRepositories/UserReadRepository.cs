@@ -1,4 +1,4 @@
-﻿using Application.Services.Repositories.UserRepositories;
+﻿using Application.Services.EntityFramework.Repositories.UserRepositories;
 using EntityFramework.Core.Persistence.Repositories;
 using Core.Security.Entities;
 using Persistence.EntityFramework.Context;

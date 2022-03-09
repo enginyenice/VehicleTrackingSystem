@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.Repositories.UserRepositories
+namespace Application.Services.EntityFramework.Repositories.UserRepositories
 {
     public interface IUserWriteRepository : IWriteRepository<User>
     {

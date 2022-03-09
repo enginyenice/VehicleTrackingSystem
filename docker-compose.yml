@@ -12,15 +12,16 @@ services:
     volumes:
       - postgresql:/var/lib/postgresql/data
   #-----------------------------------------------------------------#
-  ############################[ REDIS ]##############################
-  redisdb:
-    image: redis:6.2-alpine
-    restart: always
-    ports:
-      - '6379:6379'
-    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
-    volumes:
-      - redisdb:/data
+  ############################[ MONGODB ]##############################
+  mongodb:
+      image: mongo:5.0
+      ports:
+        - 27017:27017
+      volumes:
+        - mongodb:/data
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+        - MONGO_INITDB_ROOT_PASSWORD=mongopassword
   #-----------------------------------------------------------------#
   ##########################[ RABBITMQ ]#############################
   rabbitmqmb:
@@ -42,7 +43,7 @@ services:
 volumes:
   postgresql:
     driver: local
-  redisdb:
+  mongodb:
     driver: local
   rabbitmqmb:
     driver: local

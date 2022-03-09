@@ -1,7 +1,7 @@
 ﻿using Application.Features.Authentication.Dtos;
 using Application.Features.Authentication.Rules;
-using Application.Services.Repositories;
-using Application.Services.Repositories.UserRepositories;
+using Application.Services.EntityFramework.Repositories;
+using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Core.Application.Responses;
 using Core.Security.Entities;
 using Core.Security.Hashing;

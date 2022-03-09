@@ -1,5 +1,5 @@
-﻿using Application.Services.Repositories;
-using Application.Services.Repositories.UserRepositories;
+﻿using Application.Services.EntityFramework.Repositories;
+using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security.Hashing;
 using System;

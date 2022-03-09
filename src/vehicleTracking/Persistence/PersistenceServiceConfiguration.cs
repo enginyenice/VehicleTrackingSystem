@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistence.EntityFramework.Context;
-using Application.Services.Repositories;
+using Application.Services.EntityFramework.Repositories;
 using Persistence.EntityFramework.Repositories;
-using Application.Services.Repositories.UserRepositories;
+using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Persistence.EntityFramework.Repositories.UserRepositories;
 
 namespace Persistence
