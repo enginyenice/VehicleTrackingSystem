@@ -12,8 +12,8 @@ using Persistence.EntityFramework.Repositories;
 using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Persistence.EntityFramework.Repositories.UserRepositories;
 using Core.Persistence.MongoDb;
-using Application.Services.MongoDb;
-using Persistence.MongoDb.Repositories.CarDetailRepositories;
+using Persistence.MongoDb.Repositories.CarPathRepositories;
+using Application.Services.MongoDb.CarPathRepositories;
 
 namespace Persistence
 {
@@ -36,9 +36,9 @@ namespace Persistence
 
             services.Configure<MongoDbDatabaseSettings>(configuration.GetSection("MongoDbDatabaseSettings"));
             // Read
-            services.AddScoped<ICarDetailMongoReadRepository, CarDetailMongoReadRepository>();
+            services.AddScoped<ICarPathReadRepository, CarPathReadRepository>();
             // Write
-            services.AddScoped<ICarDetailMongoWriteRepository, CarDetailMongoWriteRepository>();
+            services.AddScoped<ICarPathWriteRepository, CarPathWriteRepository>();
 
             #endregion MongoDb Operations
 
