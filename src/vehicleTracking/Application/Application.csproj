@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Authentication\Models\" />
-    <Folder Include="Features\Authentication\Queries\" />
+    <Folder Include="Features\Authentications\Models\" />
+    <Folder Include="Features\Authentications\Mapper\" />
+    <Folder Include="Features\Authentications\Queries\" />
+    <Folder Include="Features\CarDetails\Models\" />
+    <Folder Include="Features\CarDetails\Rules\" />
   </ItemGroup>
 
 </Project>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Authentication.Dtos
+namespace Core.Persistence.MongoDb.Repositories
 {
-    public class AuthenticationDto
+    public interface IMongoRepository<TEntity> where TEntity : MongoEntity
     {
     }
 }

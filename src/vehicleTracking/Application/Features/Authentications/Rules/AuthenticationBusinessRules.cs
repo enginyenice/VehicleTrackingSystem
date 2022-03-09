@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Authentication.Rules
+namespace Application.Features.Authentications.Rules
 {
     public class AuthenticationBusinessRules
     {
