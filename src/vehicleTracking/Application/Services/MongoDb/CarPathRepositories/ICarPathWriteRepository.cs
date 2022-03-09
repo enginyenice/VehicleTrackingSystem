@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.MongoDb
+namespace Application.Services.MongoDb.CarPathRepositories
 {
-    public interface ICarDetailMongoWriteRepository : IMongoWriteRepository<CarDetail>
+    public interface ICarPathWriteRepository : IMongoWriteRepository<CarPath>
     {
     }
 }

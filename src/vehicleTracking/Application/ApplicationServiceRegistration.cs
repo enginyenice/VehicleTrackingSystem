@@ -1,4 +1,5 @@
 ﻿using Application.Features.Authentications.Rules;
+using Core.MessageBroker.RabbitMQ;
 using Core.Security.Jwt;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,7 @@ namespace Application
 
             services.AddScoped<AuthenticationBusinessRules>();
             services.AddScoped<ITokenHelper, JwtHelper>();
+
             return services;
         }
     }
