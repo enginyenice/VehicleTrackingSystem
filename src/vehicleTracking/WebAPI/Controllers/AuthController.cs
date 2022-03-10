@@ -1,6 +1,11 @@
-﻿using Application.Features.Authentications.Commands;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Application.Features.Authentications.Commands;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,6 +15,8 @@ namespace WebAPI.Controllers
     [ApiController]
     public class AuthController : CustomBaseController
     {
+        #region Methods
+
         [SwaggerOperation(Summary = "Login Endpoint", Description = "Example Account: username: userone password: password ")]
         [HttpPost]
         public async Task<IActionResult> Login(CheckAuthenticationCommand checkAuthenticationCommand)
@@ -24,5 +31,7 @@ namespace WebAPI.Controllers
         {
             return Ok("Ok");
         }
+
+        #endregion Methods
     }
 }

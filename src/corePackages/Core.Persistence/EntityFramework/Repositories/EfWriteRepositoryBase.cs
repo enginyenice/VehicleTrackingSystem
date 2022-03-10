@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework.Core.Persistence.Repositories
 {
@@ -11,18 +12,22 @@ namespace EntityFramework.Core.Persistence.Repositories
         where TEntity : Entity
         where TContext : DbContext
     {
-        public TContext Context { get; set; }
+        #region Constructors
 
         public EfWriteRepositoryBase(TContext context)
         {
             Context = context;
         }
 
-        public async Task DeleteAsync(TEntity entity)
-        {
-            Context.Entry(entity).State = EntityState.Deleted;
-            await Context.SaveChangesAsync();
-        }
+        #endregion Constructors
+
+        #region Properties
+
+        public TContext Context { get; set; }
+
+        #endregion Properties
+
+        #region Methods
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
@@ -31,15 +36,26 @@ namespace EntityFramework.Core.Persistence.Repositories
             return entity;
         }
 
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await Context.AddRangeAsync(entities);
+        }
+
+        public async Task DeleteAsync(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Deleted;
+            await Context.SaveChangesAsync();
+        }
+
+        public void DeleteRange(IEnumerable<TEntity> entities)
+        {
+            Context.RemoveRange(entities);
+        }
+
         public async Task UpdateAsync(TEntity entity)
         {
             Context.Entry(entity).State = EntityState.Modified;
             await Context.SaveChangesAsync();
-        }
-
-        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
-        {
-            await Context.AddRangeAsync(entities);
         }
 
         public void UpdateRange(IEnumerable<TEntity> entities)
@@ -47,9 +63,6 @@ namespace EntityFramework.Core.Persistence.Repositories
             Context.UpdateRange(entities);
         }
 
-        public void DeleteRange(IEnumerable<TEntity> entities)
-        {
-            Context.RemoveRange(entities);
-        }
+        #endregion Methods
     }
 }

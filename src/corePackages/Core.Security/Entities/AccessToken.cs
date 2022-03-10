@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
 
 namespace Core.Security.Entities
 {
     public class AccessToken
     {
-        public string Token { get; set; }
+        #region Properties
+
         public DateTime Expiration { get; set; }
+        public string Token { get; set; }
+
+        #endregion Properties
     }
 }

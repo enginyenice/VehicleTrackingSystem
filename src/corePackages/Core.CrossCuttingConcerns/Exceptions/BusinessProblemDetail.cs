@@ -1,18 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
     public class BusinessProblemDetails : ProblemDetails
     {
+        #region Methods
+
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);
         }
+
+        #endregion Methods
     }
 }

@@ -1,34 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Core.Application.Responses
 {
     public class Response<T> : IResponse<T> where T : class
     {
+        #region Properties
+
         public T Data { get; private set; }
-        public int StatusCode { get; private set; }
+        public ErrorDto Error { get; private set; }
 
         [JsonIgnore]
         public bool IsSuccessful { get; private set; }
 
-        public ErrorDto Error { get; private set; }
+        public int StatusCode { get; private set; }
 
-        public static Response<T> Success(T data, int statusCode)
-        {
-            Response<T> response = new Response<T>() { Data = data, StatusCode = statusCode, IsSuccessful = true };
-            return response;
-        }
+        #endregion Properties
 
-        public static Response<T> Success(int statusCode)
-        {
-            Response<T> response = new Response<T>() { Data = default, StatusCode = statusCode, IsSuccessful = true };
-            return response;
-        }
+        #region Methods
 
         public static Response<T> Fail(ErrorDto errorDto, int statusCode)
         {
@@ -43,9 +38,23 @@ namespace Core.Application.Responses
             return response;
         }
 
+        public static Response<T> Success(T data, int statusCode)
+        {
+            Response<T> response = new Response<T>() { Data = data, StatusCode = statusCode, IsSuccessful = true };
+            return response;
+        }
+
+        public static Response<T> Success(int statusCode)
+        {
+            Response<T> response = new Response<T>() { Data = default, StatusCode = statusCode, IsSuccessful = true };
+            return response;
+        }
+
         public override string ToString()
         {
             return JsonSerializer.Serialize(this);
         }
+
+        #endregion Methods
     }
 }

@@ -1,17 +1,22 @@
-﻿using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Microsoft.AspNetCore.Builder;
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
     public static class ExceptionMiddlewareExtensions
     {
+        #region Methods
+
         public static void ConfigureCustomExceptionMiddleware(this IApplicationBuilder app)
         {
             app.UseMiddleware<ExceptionMiddleware>();
         }
+
+        #endregion Methods
     }
 }

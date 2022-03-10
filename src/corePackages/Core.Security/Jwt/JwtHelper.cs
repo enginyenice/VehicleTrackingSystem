@@ -1,26 +1,37 @@
-﻿using Core.Security.Encryption;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Core.Security.Encryption;
 using Core.Security.Entities;
 using Core.Security.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Security.Jwt
 {
     public class JwtHelper : ITokenHelper
     {
+        #region Fields
+
         private TokenOption _tokenOption;
+
+        #endregion Fields
+
+        #region Constructors
 
         public JwtHelper(IOptions<TokenOption> tokenOption)
         {
             _tokenOption = tokenOption.Value;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public AccessToken CreateToken(User user)
         {
@@ -45,5 +56,7 @@ namespace Core.Security.Jwt
             };
             return accessToken;
         }
+
+        #endregion Methods
     }
 }

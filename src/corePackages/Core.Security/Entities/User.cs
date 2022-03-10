@@ -1,16 +1,21 @@
-﻿using EntityFramework.Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using EntityFramework.Core.Persistence.Repositories;
 
 namespace Core.Security.Entities
 {
     public class User : Entity
     {
-        public string Username { get; set; }
-        public string PasswordHash { get; set; }
+        #region Properties
+
         public string FullName { get; set; }
+        public string PasswordHash { get; set; }
+        public string Username { get; set; }
+
+        #endregion Properties
     }
 }

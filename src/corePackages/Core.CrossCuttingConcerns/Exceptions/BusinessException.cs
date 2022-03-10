@@ -1,18 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
     public class BusinessException : Exception
     {
-        public int StatusCode { get; private set; }
+        #region Constructors
 
         public BusinessException(string? message, int statusCode) : base(message)
         {
             StatusCode = statusCode;
         }
+
+        #endregion Constructors
+
+        #region Properties
+
+        public int StatusCode { get; private set; }
+
+        #endregion Properties
     }
 }

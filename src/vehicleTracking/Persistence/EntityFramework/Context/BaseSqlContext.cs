@@ -1,20 +1,34 @@
-﻿using Core.Security.Entities;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Core.Security.Entities;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.EntityFramework.Context
 {
     public class BaseSqlContext : DbContext
     {
+        #region Constructors
+
         public BaseSqlContext(DbContextOptions options) : base(options)
         {
         }
+
+        #endregion Constructors
+
+        #region Properties
+
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        #endregion Properties
+
+        #region Methods
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,7 +48,6 @@ namespace Persistence.EntityFramework.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Car> Cars { get; set; }
+        #endregion Methods
     }
 }

@@ -1,9 +1,17 @@
-﻿using CsvHelper.Configuration.Attributes;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using CsvHelper.Configuration.Attributes;
 
 namespace WorkerAPP
 {
     public class CarPath
     {
+        #region Properties
+
         [Index(0)]
         public DateTime DateTime { get; set; }
 
@@ -15,5 +23,7 @@ namespace WorkerAPP
 
         [Index(3)]
         public int NumberPlate { get; set; }
+
+        #endregion Properties
     }
 }

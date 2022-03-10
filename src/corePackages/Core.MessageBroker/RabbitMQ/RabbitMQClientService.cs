@@ -1,22 +1,33 @@
-﻿using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using RabbitMQ.Client;
 
 namespace Core.MessageBroker.RabbitMQ
 {
     public class RabbitMQClientService : IRabbitMQClientService
     {
+        #region Fields
+
         private readonly ConnectionFactory _connectionFactory;
-        private IConnection _connection;
         private IModel _channel;
+        private IConnection _connection;
+
+        #endregion Fields
+
+        #region Constructors
 
         public RabbitMQClientService(ConnectionFactory connectionFactory)
         {
             _connectionFactory = connectionFactory;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public IModel Connect()
         {
@@ -33,5 +44,7 @@ namespace Core.MessageBroker.RabbitMQ
             _connection?.Close();
             _connection?.Dispose();
         }
+
+        #endregion Methods
     }
 }
