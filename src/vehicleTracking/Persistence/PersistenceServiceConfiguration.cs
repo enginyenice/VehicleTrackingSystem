@@ -14,6 +14,8 @@ using Persistence.EntityFramework.Repositories.UserRepositories;
 using Core.Persistence.MongoDb;
 using Persistence.MongoDb.Repositories.CarPathRepositories;
 using Application.Services.MongoDb.CarPathRepositories;
+using Application.Services.EntityFramework.Repositories.CarRepositories;
+using Persistence.EntityFramework.Repositories.CarRepositories;
 
 namespace Persistence
 {
@@ -27,8 +29,10 @@ namespace Persistence
 
             // Read
             services.AddScoped<IUserReadRepository, UserReadRepository>();
+            services.AddScoped<ICarReadRepository, CarReadRepository>();
             // Write
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+            services.AddScoped<ICarWriteRepository, CarWriteRepository>();
 
             #endregion EntityFramework Operations
 

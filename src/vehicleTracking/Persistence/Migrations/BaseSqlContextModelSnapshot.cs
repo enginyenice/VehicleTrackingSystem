@@ -16,7 +16,7 @@ namespace Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.2")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -60,6 +60,64 @@ namespace Persistence.Migrations
                             PasswordHash = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
                             Username = "usertwo"
                         });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("NumberPlate")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NumberPlate = 196,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NumberPlate = 201,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NumberPlate = 199,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NumberPlate = 197,
+                            UserId = 2
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.HasOne("Core.Security.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
