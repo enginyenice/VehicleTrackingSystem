@@ -1,14 +1,19 @@
-﻿using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using RabbitMQ.Client;
 
 namespace Core.MessageBroker.RabbitMQ
 {
     public interface IRabbitMQClientService : IDisposable
     {
+        #region Methods
+
         public IModel Connect();
+
+        #endregion Methods
     }
 }

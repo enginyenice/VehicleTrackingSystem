@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
 
 namespace Core.Persistence.MongoDb
 {
     public class MongoDbDatabaseSettings
     {
+        #region Properties
+
         public string ConnectionString { get; set; } = null!;
 
         public string DatabaseName { get; set; } = null!;
+
+        #endregion Properties
     }
 }

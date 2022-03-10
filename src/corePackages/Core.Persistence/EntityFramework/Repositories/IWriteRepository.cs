@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
 
 namespace EntityFramework.Core.Persistence.Repositories
 {
     public interface IWriteRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
+        #region Methods
+
         Task<TEntity> AddAsync(TEntity entity);
-
-        Task UpdateAsync(TEntity entity);
-
-        Task DeleteAsync(TEntity entity);
 
         Task AddRangeAsync(IEnumerable<TEntity> entities);
 
-        void UpdateRange(IEnumerable<TEntity> entities);
+        Task DeleteAsync(TEntity entity);
 
         void DeleteRange(IEnumerable<TEntity> entities);
+
+        Task UpdateAsync(TEntity entity);
+
+        void UpdateRange(IEnumerable<TEntity> entities);
+
+        #endregion Methods
     }
 }

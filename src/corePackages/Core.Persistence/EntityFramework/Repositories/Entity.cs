@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
 
 namespace EntityFramework.Core.Persistence.Repositories
 {
     public class Entity
     {
-        public int Id { get; set; }
+        #region Constructors
 
         public Entity()
         {
@@ -18,5 +18,13 @@ namespace EntityFramework.Core.Persistence.Repositories
         {
             Id = id;
         }
+
+        #endregion Constructors
+
+        #region Properties
+
+        public int Id { get; set; }
+
+        #endregion Properties
     }
 }

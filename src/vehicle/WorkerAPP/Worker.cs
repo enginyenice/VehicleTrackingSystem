@@ -1,3 +1,9 @@
+/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
 using Core.MessageBroker.RabbitMQ;
 using CsvHelper;
 using System.Globalization;
@@ -6,10 +12,16 @@ namespace WorkerAPP
 {
     public class Worker : BackgroundService
     {
+        #region Fields
+
         private readonly ILogger<Worker> _logger;
 
         private IRabbitMQPublisher<CarPath> _rabbitMQPublisher;
         private List<CarPath> carPaths;
+
+        #endregion Fields
+
+        #region Constructors
 
         public Worker(ILogger<Worker> logger, IRabbitMQPublisher<CarPath> rabbitMQPublisher)
         {
@@ -23,6 +35,10 @@ namespace WorkerAPP
             }
         }
 
+        #endregion Constructors
+
+        #region Methods
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
@@ -33,5 +49,7 @@ namespace WorkerAPP
                 await Task.Delay((1000 * 60), stoppingToken);
             }
         }
+
+        #endregion Methods
     }
 }

@@ -1,9 +1,14 @@
-﻿namespace Core.Application.Responses
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+namespace Core.Application.Responses
 {
     public class ErrorDto
     {
-        public List<String> Errors { get; private set; } = new List<string>();
-        public bool IsShow { get; private set; }
+        #region Constructors
 
         public ErrorDto() => Errors = new List<string>();
 
@@ -18,5 +23,14 @@
             Errors = errors;
             IsShow = isShow;
         }
+
+        #endregion Constructors
+
+        #region Properties
+
+        public List<String> Errors { get; private set; } = new List<string>();
+        public bool IsShow { get; private set; }
+
+        #endregion Properties
     }
 }

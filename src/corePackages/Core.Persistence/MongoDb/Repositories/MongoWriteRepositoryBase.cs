@@ -1,16 +1,23 @@
-﻿using Microsoft.Extensions.Options;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Persistence.MongoDb.Repositories
 {
     public class MongoWriteRepositoryBase<TEntity> : IMongoWriteRepository<TEntity> where TEntity : MongoEntity
     {
+        #region Fields
+
         private readonly IMongoCollection<TEntity> _mongoCollection;
+
+        #endregion Fields
+
+        #region Constructors
 
         public MongoWriteRepositoryBase(IOptions<MongoDbDatabaseSettings> mongoDbDatabaseSettings)
         {
@@ -22,6 +29,10 @@ namespace Core.Persistence.MongoDb.Repositories
 
             _mongoCollection = mongoDatabase.GetCollection<TEntity>(typeof(TEntity).Name);
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public async Task<TEntity> CreateAsync(TEntity entity)
         {
@@ -39,5 +50,7 @@ namespace Core.Persistence.MongoDb.Repositories
             await _mongoCollection.ReplaceOneAsync(x => x.Id == entity.Id, entity);
             return entity;
         }
+
+        #endregion Methods
     }
 }

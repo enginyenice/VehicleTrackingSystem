@@ -1,7 +1,12 @@
-﻿using Application.Features.Cars.Queries;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Application.Features.Cars.Queries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
@@ -9,6 +14,8 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CarController : CustomBaseController
     {
+        #region Methods
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllByUserId()
@@ -17,5 +24,7 @@ namespace WebAPI.Controllers
             var response = await Mediator.Send(result);
             return ActionResultInstance(response);
         }
+
+        #endregion Methods
     }
 }

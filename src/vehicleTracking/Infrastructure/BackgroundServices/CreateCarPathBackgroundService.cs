@@ -1,29 +1,36 @@
-﻿using Application.Services.MongoDb.CarPathRepositories;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Application.Services.MongoDb.CarPathRepositories;
 using Core.MessageBroker.RabbitMQ;
 using Domain.MongoEntities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Infrastructure.BackgroundServices
 {
     public class CreateCarPathBackgroundService : BackgroundService
     {
-        private readonly IRabbitMQClientService _rabbitMQClientService;
-        private IModel _channel;
+        #region Fields
 
+        private readonly IRabbitMQClientService _rabbitMQClientService;
         private ICarPathWriteRepository _carPathWriteRepository;
+        private IModel _channel;
         private string ExchangeName;
 
         private string QueueName;
         private string RoutingKey;
+
+        #endregion Fields
+
+        #region Constructors
 
         public CreateCarPathBackgroundService(IRabbitMQClientService rabbitMQClientService, IServiceProvider serviceProvider)
         {
@@ -33,6 +40,10 @@ namespace Infrastructure.BackgroundServices
             RoutingKey = $"{typeof(CarPath).Name}.RoutingKey".ToLower();
             _carPathWriteRepository = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<ICarPathWriteRepository>();
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
@@ -57,5 +68,7 @@ namespace Infrastructure.BackgroundServices
             _channel.BasicAck(@event.DeliveryTag, false);
             return Task.CompletedTask;
         }
+
+        #endregion Methods
     }
 }

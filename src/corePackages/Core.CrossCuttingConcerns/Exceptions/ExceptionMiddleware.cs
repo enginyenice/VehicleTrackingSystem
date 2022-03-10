@@ -1,23 +1,32 @@
-﻿using Core.Application.Responses;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Core.Application.Responses;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
     public class ExceptionMiddleware
     {
+        #region Fields
+
         private RequestDelegate _next;
+
+        #endregion Fields
+
+        #region Constructors
 
         public ExceptionMiddleware(RequestDelegate next)
         {
             _next = next;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public async Task Invoke(HttpContext context)
         {
@@ -66,5 +75,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
                     .Fail(exception.Message, StatusCodes.Status400BadRequest, true)
                     .ToString());
         }
+
+        #endregion Methods
     }
 }

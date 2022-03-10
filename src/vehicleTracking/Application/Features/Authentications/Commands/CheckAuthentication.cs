@@ -1,4 +1,10 @@
-﻿using Application.Features.Authentications.Rules;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
+using Application.Features.Authentications.Rules;
 using Application.Services.EntityFramework.Repositories.UserRepositories;
 using Core.Application.Responses;
 using Core.Security.Entities;
@@ -10,15 +16,25 @@ namespace Application.Features.Authentications.Commands
 {
     public class CheckAuthenticationCommand : IRequest<IResponse<AccessToken>>
     {
-        public string Username { get; set; }
+        #region Properties
+
         public string Password { get; set; }
+        public string Username { get; set; }
+
+        #endregion Properties
     }
 
     public class CheckAuthenticationCommandHandler : IRequestHandler<CheckAuthenticationCommand, IResponse<AccessToken>>
     {
+        #region Fields
+
         private AuthenticationBusinessRules _authenticationBusinessRules;
         private ITokenHelper _tokenHelper;
         private IUserReadRepository _userReadRepository;
+
+        #endregion Fields
+
+        #region Constructors
 
         public CheckAuthenticationCommandHandler(AuthenticationBusinessRules authenticationBusinessRules, ITokenHelper tokenHelper, IUserReadRepository userReadRepository)
         {
@@ -26,6 +42,10 @@ namespace Application.Features.Authentications.Commands
             _tokenHelper = tokenHelper;
             _userReadRepository = userReadRepository;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         public async Task<IResponse<AccessToken>> Handle(CheckAuthenticationCommand request, CancellationToken cancellationToken)
         {
@@ -36,5 +56,7 @@ namespace Application.Features.Authentications.Commands
             AccessToken accessToken = _tokenHelper.CreateToken(user);
             return Response<AccessToken>.Success(accessToken, 200);
         }
+
+        #endregion Methods
     }
 }

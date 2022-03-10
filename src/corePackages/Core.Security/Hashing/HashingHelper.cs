@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Security.Hashing
 {
     public class HashingHelper
     {
+        #region Methods
+
         public static string HashPassword(string password)
         {
             string passwordHash = "";
@@ -19,5 +23,7 @@ namespace Core.Security.Hashing
             }
             return passwordHash;
         }
+
+        #endregion Methods
     }
 }
