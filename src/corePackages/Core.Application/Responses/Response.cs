@@ -52,7 +52,10 @@ namespace Core.Application.Responses
 
         public override string ToString()
         {
-            return JsonSerializer.Serialize(this);
+            JsonSerializerOptions options = new JsonSerializerOptions();
+            options.PropertyNameCaseInsensitive = true;
+            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            return JsonSerializer.Serialize<Response<T>>(this, options);
         }
 
         #endregion Methods

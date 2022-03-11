@@ -5,6 +5,7 @@ Website: enginyenice.com
 */
 
 using Application.Features.Authentications.Rules;
+using Application.Features.Cars.Rules;
 using Core.Security.Jwt;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,8 +22,10 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            services.AddScoped<AuthenticationBusinessRules>();
             services.AddScoped<ITokenHelper, JwtHelper>();
+
+            services.AddScoped<AuthenticationBusinessRules>();
+            services.AddScoped<CarBusinessRules>();
 
             return services;
         }

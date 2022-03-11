@@ -43,10 +43,13 @@ namespace WorkerAPP
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var senderCarPaths = carPaths.Where(p => p.DateTime > DateTime.Now.AddMinutes(-360) && p.DateTime < DateTime.Now).ToList();
-                senderCarPaths.ForEach(p => _rabbitMQPublisher.Publish(p));
+                var senderCarPaths = carPaths.Where(p => p.DateTime > DateTime.Now.AddMinutes(-60) && p.DateTime < DateTime.Now).ToList();
+                senderCarPaths.ForEach(p =>
+                {
+                    _rabbitMQPublisher.Publish(p);
+                });
                 _logger.LogInformation($"{senderCarPaths.Count} car path sended.");
-                await Task.Delay((1000 * 60), stoppingToken);
+                await Task.Delay((1000 * 60 * 60), stoppingToken);
             }
         }
 

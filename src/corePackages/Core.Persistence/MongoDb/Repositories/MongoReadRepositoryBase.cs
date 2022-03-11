@@ -6,6 +6,7 @@ Website: enginyenice.com
 
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using System.Linq.Expressions;
 
 namespace Core.Persistence.MongoDb.Repositories
 {
@@ -33,6 +34,11 @@ namespace Core.Persistence.MongoDb.Repositories
         #endregion Constructors
 
         #region Methods
+
+        public async Task<List<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _mongoCollection.Find(predicate).ToListAsync();
+        }
 
         public async Task<List<TEntity>> GetAllAsync()
         {

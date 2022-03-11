@@ -1,3 +1,9 @@
+/*
+Author: Engin Yenice
+Github: github.com/enginyenice
+Website: enginyenice.com
+*/
+
 using Application;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security.Entities;
@@ -6,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using System.Globalization;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,11 +21,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<TokenOption>(builder.Configuration.GetSection("TokenOption"));
 
+var cultureInfo = new CultureInfo("tr-TR");
+cultureInfo.NumberFormat.NumberGroupSeparator = ".";
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddInfrastructureServices(builder.Configuration);
+
+builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
+         builder =>
+         {
+             builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials();
+         }));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -91,6 +112,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("CorsPolicy");
 app.ConfigureCustomExceptionMiddleware();
 app.UseHttpsRedirection();
 

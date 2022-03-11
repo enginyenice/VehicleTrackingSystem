@@ -4,17 +4,20 @@ Github: github.com/enginyenice
 Website: enginyenice.com
 */
 
-using Core.Persistence.MongoDb.Repositories;
-using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Domain.MongoEntities
+namespace Application.Features.CarPaths.Dtos
 {
-    public class CarPath : MongoEntity
+    public class CarPathDto
     {
         #region Properties
 
         public DateTime DateTime { get; set; }
-
+        public string Id { get; set; }
         public decimal Latitute { get; set; }
 
         public decimal Longitude { get; set; }

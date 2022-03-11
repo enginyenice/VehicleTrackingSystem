@@ -26,9 +26,11 @@
     <Folder Include="Features\Authentications\Models\" />
     <Folder Include="Features\Authentications\Mapper\" />
     <Folder Include="Features\Authentications\Queries\" />
+    <Folder Include="Features\CarPaths\Commands\" />
+    <Folder Include="Features\CarPaths\Models\" />
+    <Folder Include="Features\CarPaths\Rules\" />
     <Folder Include="Features\Cars\Commands\" />
     <Folder Include="Features\Cars\Models\" />
-    <Folder Include="Features\Cars\Rules\" />
   </ItemGroup>
 
 </Project>
